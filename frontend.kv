@@ -1,0 +1,72 @@
+#:kivy 2.0.0
+<CameraScreen>:
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+        Camera:
+            id: camera
+            resolution: (680, 480)
+            play: False
+            size_hint_y: 0.8
+            opacity: 0
+            # for not showing it, 1 - the opposite
+        Button:
+            id: camera_button
+            text:'Start Camera'
+            on_press: root.start() if root.ids.camera.play == False else root.stop()
+            size_hint_y: 0.1
+            background_normal: 'images/dark.jpg'
+            background_down: 'images/blue.png'
+        Button:
+            text: 'Capture'
+            size_hint_y: 0.1
+            on_press: root.capture()
+            background_normal: 'images/dark.jpg'
+            background_down: 'images/blue.png'
+
+<ImageScreen>:
+    GridLayout:
+        cols: 1
+        Image:
+            id: img
+            size_hint_y: 0.7
+        Button:
+            text: 'Create Shareble Link'
+            on_press: root.create_link()
+            size_hint_y: 0.125
+            background_normal: 'images/dark.jpg'
+            background_down: 'images/blue.png'
+        Label:
+            id: link
+            size_hint_y: 0.05
+        GridLayout:
+            cols:2
+            size_hint_y: 0.125
+            Button:
+                text: 'Copy link'
+                on_press: root.copy_link()
+                background_normal: 'images/dark.jpg'
+                background_down: 'images/blue.png'
+            Button:
+                text: 'Open link'
+                on_press: root.open_link()
+                background_normal: 'images/dark.jpg'
+                background_down: 'images/blue.png'
+
+
+<RootWidget>:
+    canvas.before:
+        Color:
+            rgba: (0.3, 0.4, 0.3, 1)
+            # rgba - red, green, blue, alpha - 1 for coplete vision
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            # we draw the same rectangle, as RootEidget
+    CameraScreen: 
+        id: camera_screen
+        name: 'camera_screen'
+    ImageScreen:
+        id: image_screen
+        name: 'image_screen'
