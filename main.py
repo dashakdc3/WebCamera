@@ -88,7 +88,6 @@ class ImageScreen(Screen):
 class RootWidget(ScreenManager):
     pass
 
-
 class MainApp(App):
     def build(self):
         return RootWidget()
