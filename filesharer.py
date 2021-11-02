@@ -2,7 +2,8 @@ from filestack import Client
 
 
 class FileSharer():
-    def __init__(self, filepath, api_key='get your free api_key:https://www.filestack.com/'):
+    def __init__(self, filepath, api_key='Aaxkweq8RQk66gcvnijx1z'):
+        #get your free api_key:https://www.filestack.com/
         self.filepath = filepath
         self.api_key = api_key
 
